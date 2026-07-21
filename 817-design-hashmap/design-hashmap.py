@@ -8,6 +8,7 @@ class MyHashMap:
 
     def __init__(self):
         self.size = 1000
+        
         self.table = [None] * self.size
 
     def _index(self, key: int) -> int:
