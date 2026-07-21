@@ -1,18 +1,13 @@
 class ListNode:
     def __init__(self, key, value):
         self.key = key
-        
         self.value = value
-
         self.next = None
 
 class MyHashMap:
 
     def __init__(self):
         self.size = 1000
-        
-        
-        
         self.table = [None] * self.size
 
     def _index(self, key: int) -> int:
@@ -20,10 +15,6 @@ class MyHashMap:
 
     def put(self, key: int, value: int) -> None:
         idx = self._index(key)
-        
-        
-        
-        
         if not self.table[idx]:
             self.table[idx] = ListNode(key, value)
             return
