@@ -3,11 +3,10 @@ class Solution:
         s_dict = defaultdict(int)
         t_dict = defaultdict(int)
         
-        if len(s) != len(t):
-            return False
+        for v in s:
+            s_dict[v] +=1
 
-        for i in range(len(s)):
-            s_dict[s[i]] += 1
-            t_dict[t[i]] += 1
+        for w in t:
+            t_dict[w] += 1
 
         return s_dict == t_dict    
