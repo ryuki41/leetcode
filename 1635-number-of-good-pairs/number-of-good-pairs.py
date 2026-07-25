@@ -1,11 +1,15 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        pairs_count = 0
-        for i in range(len(nums)):
-            # 自分自身はカウントしない
-            for j in range(i+1, len(nums)):
-                if nums[i] == nums[j]:
-                    pairs_count += 1
+        groups = defaultdict(int)
+        for num in nums:
+            groups[num] += 1
+        
+        counter = 0
+        for key, g in groups.items():
 
+            if g == 1:
+                continue
+            # 組み合わせ分足す
+            counter += g * (g-1) // 2
 
-        return pairs_count         
+        return counter
