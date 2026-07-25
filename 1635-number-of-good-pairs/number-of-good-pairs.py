@@ -5,7 +5,7 @@ class Solution:
             groups[num] += 1
         
         counter = 0
-        for key, g in groups.items():
+        for g in groups.values():
 
             if g == 1:
                 continue
