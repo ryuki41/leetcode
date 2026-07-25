@@ -1,33 +1,28 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        max_consecutive_length = 0
-        nums_set = set(nums)
+        nums = list(set(nums))
+        nums.sort()
 
-        for num in nums:
-            if num not in nums_set:
-                continue
+        max_sequence_count = 0
+
+        sequence_count = 0
+        while len(nums) > 0:
+            sequence_count = 1
+            current_num = nums.pop(0)
+
+            for i in range(len(nums)):
+                if nums[0] - current_num == 1:
+                    current_num = nums.pop(0)
+                    sequence_count += 1
+                else: 
+                    max_sequence_count = max(max_sequence_count, sequence_count)
+                    break
+        
+        return max(max_sequence_count, sequence_count)
+
+
+
+
+
             
-            nums_set.remove(num)
-            current_consecutive_length = 1
 
-            # numより大きい値の連続数を数える
-            i = 1
-            while num+i in nums_set:
-                # nums_setから除外することで同じ数の連続数を数えないようにする
-                nums_set.remove(num+i)
-
-                current_consecutive_length += 1               
-                i += 1
-
-            
-            # numより小さい値の連続数を数える
-            j = 1
-            while num-j in nums_set:
-                nums_set.remove(num-j)
-
-                current_consecutive_length += 1               
-                j += 1
-
-            max_consecutive_length = max(max_consecutive_length, current_consecutive_length)
-
-        return max_consecutive_length
