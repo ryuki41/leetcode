@@ -12,7 +12,7 @@ class Solution:
             sum += mat[i][len(mat)-i-1]
         
 
-        # 行のサイズが奇数の場合、中心部分の数字が2回カウントされているので、1回分カウントを減らす
+        # 行列のサイズが奇数の場合、中心部分の数字が2回カウントされているので、1回分カウントを減らす
         if len(mat) % 2 == 1:
             center_point = len(mat) // 2
             center_num = mat[center_point][center_point]
