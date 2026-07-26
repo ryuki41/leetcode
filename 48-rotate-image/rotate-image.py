@@ -6,14 +6,14 @@ class Solution:
         n = len(matrix)
         for i in range(n//2):
             for j in range(i, n-i-1):
-                # 一時変数に現在の値を保存
+                # 左上の値を一時保存
                 tmp = matrix[i][j]
-                # 左下から左上へ値を移動
+                # 左下から左上へ移動
                 matrix[i][j] = matrix[n-j-1][i]
-                # 右下から左下へ値を移動
+                # 右下から左下へ移動
                 matrix[n-j-1][i] = matrix[n-i-1][n-j-1]
-                # 右上から右下へ値を移動
+                # 右上から右下へ移動
                 matrix[n-i-1][n-j-1] = matrix[j][n-i-1]
-                # 一時変数から右上へ値を移動
+                # 左上から右上へ移動
                 matrix[j][n-i-1] = tmp
         
