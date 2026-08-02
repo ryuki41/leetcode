@@ -1,15 +1,17 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        groups = defaultdict(int)
+        duplicate_list = defaultdict(int)
+
+        duplicate_count = 0
         for num in nums:
-            groups[num] += 1
+            duplicate_list[num] += 1
         
-        counter = 0
-        for g in groups.values():
+        for _, value in duplicate_list.items():
 
-            if g == 1:
-                continue
-            # 組み合わせ分足す
-            counter += g * (g-1) // 2
 
-        return counter
+            if value > 1:
+                duplicate_count += math.factorial(value) // (math.factorial(2) * math.factorial(value-2))
+            
+        return duplicate_count
+        
+        
