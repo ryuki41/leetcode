@@ -1,14 +1,11 @@
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        num_index_map = {}
+        num_dic = defaultdict(int)
 
-        for index, value in enumerate(nums):
-            # 値が既に出てきたかをnum_index_mapを見ることで確認
-            if value in num_index_map and abs(num_index_map[value] - index) <= k :
+        for i in range(len(nums)):
+            if nums[i] in num_dic and i - num_dic[nums[i]] <= k:
                 return True
 
-            num_index_map[value] = index
-
-        return False
-
+            num_dic[nums[i]] = i
         
+        return False
