@@ -1,23 +1,28 @@
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
-        counter_list = []
-        for word in words:
-            # 各小文字英字のカウントを数える
-            counter = [0] * 26
-            for w in word:
-                counter[ord(w)- ord("a")] += 1
-            counter_list.append(counter)
+        num_of_letters = 26
+        min_letter_counter = [0] * num_of_letters
 
-        duplicate_list = []
-        for index in range(26):
-            str_list = []
-            for counter in counter_list:
-                str_list.append(counter[index])
-                
-            # 各単語に何回指定のアルファベットが出てくるかの最小値を取得
-            str_min = min(str_list)
-
-            for i in range(str_min):
-                duplicate_list.append(chr(index+ord("a")))
+        for w in words[0]:
+            min_letter_counter[ord(w) - ord("a")] += 1
         
-        return duplicate_list
+        for i in range(1, len(words)):
+            letter_counter = [0] * num_of_letters
+            for w in words[i]:
+                letter_counter[ord(w) -ord("a")] += 1
+            
+            for j in range(num_of_letters):
+                min_letter_counter[j] = min(min_letter_counter[j], letter_counter[j])
+        
+        dup_counter = []
+        for k in range(num_of_letters):
+            for i in range(min_letter_counter[k]):
+                dup_counter.append(chr(k + ord("a")))
+
+        return dup_counter
+
+
+
+        
+
+        
