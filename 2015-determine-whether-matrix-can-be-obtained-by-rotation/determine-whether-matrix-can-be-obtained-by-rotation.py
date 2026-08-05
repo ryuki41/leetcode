@@ -1,55 +1,21 @@
 class Solution:
     def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
-        # 回転させずとも一致するか
-        target_match = True
+        all_rotation = [True] * 4
+
         n = len(mat)
         for i in range(n):
             for j in range(n):
-                if target[i][j] != mat[i][j]:
-                    target_match = False
-                    break
-            if not target_match:
-                break
+                # 回転しない場合
+                if mat[i][j] != target[i][j]:
+                    all_rotation[0] = False
+                # 90度回転する場合
+                if mat[i][j] != target[j][n-i-1]:
+                    all_rotation[1] = False
+                # 180度回転する場合
+                if mat[i][j] != target[n-1-i][n-1-j]:
+                    all_rotation[2] = False
+                # 270度回転する場合   
+                if mat[i][j] != target[n-j-1][i]:
+                    all_rotation[3] = False
         
-        if target_match:
-            return True
-
-        # 時計回りに90度回転
-        target_match = True
-        n = len(mat)
-        for i in range(n):
-            for j in range(n):
-                if target[i][j] != mat[j][n-i-1]:
-                    target_match = False
-                    break
-            if not target_match:
-                break
-        
-        if target_match:
-            return True
-        
-        # 180度回転
-        target_match = True
-        for i in range(n):
-            for j in range(n):
-                if target[i][j] != mat[n-i-1][n-j-1]:
-                    target_match = False
-                    break
-            if not target_match:
-                break
-        
-        if target_match:
-            return True
-
-        # 270度回転    
-        target_match = True
-        for i in range(n):
-            for j in range(n):
-                if target[i][j] != mat[n-j-1][i]:
-                    target_match = False
-                    break
-            if not target_match:
-                break
-        
-        return target_match
-        
+        return any(all_rotation)
