@@ -1,1 +1,1 @@
-<h2>contains-duplicate-ii Notes</h2><hr>[ Time taken: 15m 18s ]
+<h2>contains-duplicate-ii Notes</h2><hr>[ Time taken: 5m 56s ]
