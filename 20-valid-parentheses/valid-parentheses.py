@@ -1,20 +1,22 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        # 開きカッコをスタックしていく
-        bracket_stack = []
         open_brackets = ["(", "{", "["]
-        bracket_pairs = {
-            ")" : "(",
-            "}" : "{",
-            "]" : "["
+
+        bracket_pair = {
+            ")":"(",
+            "}":"{",
+            "]":"[" 
         }
 
-        for bracket in s:
-            if bracket in open_brackets:
-                bracket_stack.append(bracket)
-            else:
-                if not bracket_stack or bracket_stack[-1] != bracket_pairs[bracket]:
-                    return False
-                bracket_stack.pop()
-
-        return len(bracket_stack) == 0
+        stack = []
+        for c in s:
+            if c in open_brackets:
+                stack.append(c)
+                continue
+            
+            if len(stack) == 0 or stack[-1] != bracket_pair[c]:
+                return False
+            
+            stack.pop()
+        
+        return len(stack) == 0
