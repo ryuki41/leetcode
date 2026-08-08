@@ -5,7 +5,7 @@ class Solution:
 
         reverse_vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
-        s_list = [c for c in s]
+        s_list = list(s)
 
         while left < right:
             while left < right and not s_list[left] in reverse_vowels:
