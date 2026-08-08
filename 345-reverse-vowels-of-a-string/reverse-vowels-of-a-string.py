@@ -3,7 +3,7 @@ class Solution:
         left = 0
         right = len(s) -1
 
-        reverse_vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+        reverse_vowels = set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"])
 
         s_list = list(s)
 
