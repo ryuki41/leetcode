@@ -2,28 +2,20 @@ class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         if len(nums) == 0:
             return 0
-
+        
         nums.sort()
 
-        max_sequence_count = 1
-        cur_sequence_count = 1
-
+        max_seq = 1
+        cur_seq = 1
         for i in range(1, len(nums)):
-            # 同じ数字はカウントしないためスキップ
-            if nums[i] == nums[i-1]:
+            if nums[i-1] == nums[i]:
                 continue
-
-            if nums[i] - nums[i-1] == 1:
-                cur_sequence_count += 1
-            else:
-                max_sequence_count = max(max_sequence_count, cur_sequence_count)
-                cur_sequence_count = 1
-        
-        return max(max_sequence_count, cur_sequence_count)
-
-
-
-
-
             
+            if nums[i-1]+1 == nums[i]:
+                cur_seq += 1
+            else:
+                max_seq = max(max_seq, cur_seq)
+                cur_seq = 1
+        
+        return max(max_seq, cur_seq)
 
