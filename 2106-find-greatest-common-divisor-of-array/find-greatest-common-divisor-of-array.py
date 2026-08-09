@@ -1,16 +1,18 @@
 class Solution:
     def findGCD(self, nums: List[int]) -> int:
-        min_num = min(nums)
-        max_num = max(nums)
+        a = max(nums)
+        b = min(nums)
 
-        return gcd(max_num, min_num)
-    
-    def gcd(a, b):
-        if a < b:
-            a, b = b, a
+        def gcd(a: int, b: int):
+            if a < b:
+                a, b = b, a
+            
+            r = a % b
+
+            if r == 0:
+                return b
+            else:
+                return gcd(b, r)
         
-        r = a % b
-        if r == 0:
-            return b
-        
-        return gcd(b, r)
+
+        return gcd(a, b)
