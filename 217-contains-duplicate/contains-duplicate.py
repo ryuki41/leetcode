@@ -1,11 +1,11 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        apper_nums = {}
+        num_cnt = defaultdict(int)
 
         for num in nums:
-            if num in apper_nums:
+            num_cnt[num] += 1
+            if num_cnt[num] >= 2:
                 return True
-            apper_nums[num] = 1
-        
-        return False
+
+        return False        
         
