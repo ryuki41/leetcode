@@ -3,10 +3,11 @@ class Solution:
         if len(nums) == 0:
             return []
 
-        sum_nums = []
-        sum_nums.append(nums[0])
+        res = []
+        res.append(nums[0])
 
+        # 累積和の計算
         for i in range(1, len(nums)):
-            sum_nums.append(nums[i]+sum_nums[i-1])
+            res.append(res[i-1] + nums[i])
         
-        return sum_nums
+        return res
