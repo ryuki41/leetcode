@@ -1,12 +1,17 @@
 class Solution:
     def removeDuplicates(self, s: str) -> str:
         stack = []
-        for char in s:
-            if stack and stack[-1] == char:
-                # 文字の重複
-                stack.pop()
-                continue
+
+        for c in s:
+            stack.append(c)
             
-            stack.append(char)
+            while len(stack) >= 2:
+                if stack[-1] == stack[-2]:
+                    for _ in range(2):
+                        stack.pop()
+                else:
+                    break
+            
         
         return "".join(stack)
+                
