@@ -1,23 +1,23 @@
 class Solution:
     def reverseVowels(self, s: str) -> str:
+        vowels = ["a", "e", "i", "o", "u"]
+        
         left = 0
-        right = len(s) -1
-
-        reverse_vowels = set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"])
-
+        right = len(s) - 1
         s_list = list(s)
 
         while left < right:
-            while left < right and not s_list[left] in reverse_vowels:
+            if not s_list[left].lower() in vowels:
                 left += 1
-            
-            while left < right and not s_list[right] in reverse_vowels:
+                continue
+
+            if not s_list[right].lower() in vowels:
                 right -= 1
-            
-            if left < right:
-                s_list[left], s_list[right] = s_list[right], s_list[left]
-            
+                continue
+
+            s_list[left], s_list[right] = s_list[right], s_list[left]
+
             left += 1
             right -= 1
-        
-        return "".join(s_list)
+
+        return "".join(s_list)        
