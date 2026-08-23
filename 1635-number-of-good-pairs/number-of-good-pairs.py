@@ -6,8 +6,7 @@ class Solution:
         
         total_count = 0
 
-        for num in num_dict:
-            count = num_dict[num]
+        for count in num_dict.values():
             if count >= 2:
                 total_count += count * (count -1) // 2
             
