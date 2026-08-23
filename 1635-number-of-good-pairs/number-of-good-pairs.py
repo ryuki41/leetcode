@@ -1,15 +1,14 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        cnts = defaultdict(int)
-        pairs = 0
-
+        num_dict = defaultdict(int)
         for num in nums:
-            cnts[num] += 1
-
-
-        for cnt in cnts.values():
-            pairs += cnt * (cnt-1) // 2
+            num_dict[num] += 1
         
-        return pairs
+        total_count = 0
 
-
+        for num in num_dict:
+            count = num_dict[num]
+            if count >= 2:
+                total_count += count * (count -1) // 2
+            
+        return total_count
