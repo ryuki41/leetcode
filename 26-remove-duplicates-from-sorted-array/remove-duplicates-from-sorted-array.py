@@ -7,5 +7,4 @@ class Solution:
                 nums[left+1] = nums[i]
                 left += 1
         
-        for i in range(left+1, len(nums)):
-            nums.pop()
+        return left+1
