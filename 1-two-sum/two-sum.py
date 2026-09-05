@@ -1,10 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        num_dict = defaultdict(int)
+        num_map = {};
 
         for i in range(len(nums)):
-            num = nums[i]
-            if target - num in num_dict:
-                return [num_dict[target - num], i]
+            if target - nums[i] in num_map:
+                return [num_map[target - nums[i]], i]
             
-            num_dict[num] = i
+            num_map[nums[i]] = i
