@@ -1,7 +1,7 @@
 class Solution:
     def customSortString(self, order: str, s: str) -> str:
-        dic_order = defaultdict(int)
-        for index, v in enumerate(order):
-            dic_order[v] = index
+        order_map = defaultdict(int)
+        for i, o in enumerate(order):
+            order_map[o] = i
         
-        return "".join(sorted(s, key=lambda o: dic_order[o]))
+        return "".join(sorted(s, key=lambda c: order_map[c]))
