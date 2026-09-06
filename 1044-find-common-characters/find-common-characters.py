@@ -1,28 +1,24 @@
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
         num_of_letters = 26
-        min_letter_counter = [0] * num_of_letters
+        min_freq = [0] * num_of_letters
 
         for w in words[0]:
-            min_letter_counter[ord(w) - ord("a")] += 1
+            min_freq[ord(w) - ord("a")] += 1
         
         for i in range(1, len(words)):
-            letter_counter = [0] * num_of_letters
-            for w in words[i]:
-                letter_counter[ord(w) -ord("a")] += 1
+            word = words[i]
+            freq = [0] * num_of_letters
+
+            for w in word:
+                freq[ord(w) - ord("a")] += 1
             
-            for j in range(num_of_letters):
-                min_letter_counter[j] = min(min_letter_counter[j], letter_counter[j])
-        
-        dup_counter = []
-        for k in range(num_of_letters):
-            for i in range(min_letter_counter[k]):
-                dup_counter.append(chr(k + ord("a")))
+            for i in range(num_of_letters):
+                min_freq[i] = min(min_freq[i], freq[i])
 
-        return dup_counter
+        res = []
+        for i, num in enumerate(min_freq):
+            for _ in range(num):
+                res.append(chr(i + ord("a")))
 
-
-
-        
-
-        
+        return res
