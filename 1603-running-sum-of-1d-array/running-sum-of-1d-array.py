@@ -1,13 +1,14 @@
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
-        if len(nums) == 0:
-            return []
-
         res = []
+
         res.append(nums[0])
 
-        # 累積和の計算
         for i in range(1, len(nums)):
-            res.append(res[i-1] + nums[i])
-        
+            res.append(res[i-1]+nums[i])
+
         return res
+
+
+
+        
