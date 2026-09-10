@@ -4,7 +4,7 @@ class Solution:
         total = 0
         for i in range(n):
             total += mat[i][i]
-            total += mat[i][n- 1 - i]
+            total += mat[i][n-1-i]
         
         if n % 2 == 1:
             center = n // 2
