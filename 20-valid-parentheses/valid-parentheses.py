@@ -15,10 +15,12 @@ class Solution:
                 stack.append(bracket)
                 continue
             
-            if bracket in close_brackets and stack[-1] == bracket_pair[bracket]:
+            if bracket in close_brackets:
+                if stack[-1] != bracket_pair[bracket]:
+                    return False
                 stack.pop()
                 continue
             
             stack.append(bracket)
-            
+
         return len(stack) == 0
