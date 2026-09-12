@@ -22,7 +22,6 @@ class Solution:
                     equal_list[3] = False
 
            
-        if True in equal_list:
-            return True
-        return False
+        
+        return any(equal_list)
         
