@@ -21,6 +21,8 @@ class Solution:
                 if mat[i][j] != target[n-j-1][i]:
                     equal_list[3] = False
 
+                if not any(equal_list):
+                    return False
            
         
         return any(equal_list)
