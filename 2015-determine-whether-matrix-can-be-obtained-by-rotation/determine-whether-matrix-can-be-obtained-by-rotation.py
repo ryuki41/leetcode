@@ -1,20 +1,28 @@
 class Solution:
     def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
+        equal_list = [True] * 4;
+
         n = len(mat)
-        degree_result = [True] * 4
         for i in range(n):
             for j in range(n):
-                # 回転しない場合
+                # 回転していない場合
                 if mat[i][j] != target[i][j]:
-                    degree_result[0] = False
-                # 90度回転する場合
+                    equal_list[0] = False
+                
+                # 90度回転
                 if mat[i][j] != target[j][n-i-1]:
-                    degree_result[1] = False
-                # 180度回転する場合
-                if mat[i][j] != target[n-i-1][n-j-1]:
-                    degree_result[2] = False
-                # 270度回転する場合
-                if mat[i][j] != target[n-j-1][i]:
-                    degree_result[3] = False
+                    equal_list[1] = False
 
-        return any(degree_result)
+                # 180度回転
+                if mat[i][j] != target[n-i-1][n-j-1]:
+                    equal_list[2] = False
+
+                # 270度回転
+                if mat[i][j] != target[n-j-1][i]:
+                    equal_list[3] = False
+
+           
+        if True in equal_list:
+            return True
+        return False
+        
