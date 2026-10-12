@@ -1,1 +1,1 @@
-<h2>count-binary-substrings Notes</h2><hr>[ Time taken: 3m 19s ]
+<h2>count-binary-substrings Notes</h2><hr>[ Time taken: 2m 37s ]
