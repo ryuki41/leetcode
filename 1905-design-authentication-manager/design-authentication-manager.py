@@ -15,8 +15,8 @@ class AuthenticationManager:
 
     def countUnexpiredTokens(self, currentTime: int) -> int:
         count = 0
+        limit = currentTime - self.ttl
         for tokenId in self.token:
-            limit = currentTime - self.ttl
             if self.token[tokenId] > limit:
                 count += 1
         
