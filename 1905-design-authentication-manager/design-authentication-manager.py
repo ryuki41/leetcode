@@ -2,29 +2,26 @@ class AuthenticationManager:
 
     def __init__(self, timeToLive: int):
         self.ttl = timeToLive
-
         self.token = dict()
-        
 
     def generate(self, tokenId: str, currentTime: int) -> None:
-        self.token[tokenId] = currentTime
-        
+        self.token[tokenId] = currentTime        
 
     def renew(self, tokenId: str, currentTime: int) -> None:
         limit = currentTime - self.ttl
-        if tokenId in self.token and self.token[tokenId] > limit:
-            self.token[tokenId] = currentTime
         
+        if tokenId in self.token and self.token[tokenId] > limit:
+            self.token[tokenId] = currentTime  
 
     def countUnexpiredTokens(self, currentTime: int) -> int:
         count = 0
-        limit = currentTime - self.ttl
-        for i in self.token:
-            if self.token[i] > limit:
+        for tokenId in self.token:
+            limit = currentTime - self.ttl
+            if self.token[tokenId] > limit:
                 count += 1
-
+        
         return count
-
+            
         
 
 
